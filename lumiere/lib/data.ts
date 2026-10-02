@@ -1,0 +1,237 @@
+import type { Category, Product, Review, Shade } from "./types";
+
+export const categories: Category[] = [
+  { slug: "makeup", name: "Makeup", tagline: "Colour with intention", blurb: "Lipsticks, complexion and eyes engineered for wear, comfort and colour that looks like you — only better.", from: "#f3c6cf", to: "#c4536a" },
+  { slug: "skincare", name: "Skincare", tagline: "Rituals that work", blurb: "Clinically-minded serums, moisturisers and SPF for every skin type, built around ingredients that earn their place.", from: "#fbe3d3", to: "#e0a58c" },
+  { slug: "haircare", name: "Haircare", tagline: "Strength to shine", blurb: "Salon-grade masks, oils and cleansers that repair, protect and give hair its movement back.", from: "#e9d9ee", to: "#9d7bb0" },
+  { slug: "fragrance", name: "Fragrance", tagline: "Wear your signature", blurb: "Small-batch eaux de parfum with long, layered dry-downs — from soft florals to smoked amber.", from: "#f6e2bf", to: "#b8883a" },
+  { slug: "tools", name: "Tools", tagline: "Precision in hand", blurb: "Professional brushes and sponges that make every product perform better.", from: "#dfe7e3", to: "#6f8f85" },
+];
+
+const sh = (name: string, hex: string): Shade => ({ name, hex });
+
+type Seed = Omit<Product, "reviews">;
+
+const seed: Seed[] = [
+  {
+    id: 1, slug: "velvet-rouge-matte-lipstick", name: "Velvet Rouge Matte Lipstick", brand: "Maison Lumière",
+    category: "makeup", subcategory: "Lips", price: 28, rating: 4.8, reviewCount: 1284, stock: 42,
+    tagline: "Weightless, blurred-edge colour that stays for 12 hours.",
+    description: "A cushiony, feather-light matte with pigment-rich colour in a single swipe. The micro-fine formula glides on without dragging, blurs lip lines and dries down to a soft-focus velvet finish that never feels tight.",
+    benefits: ["12-hour comfortable wear", "Hyaluronic complex keeps lips plush", "Transfer-resistant, mask-friendly", "Vegan & cruelty-free"],
+    howToUse: "Define the cupid's bow, then fill in from the centre outward. For a diffused stain, press with a fingertip. Layer for intensity.",
+    ingredients: "Caprylic/Capric Triglyceride, Dimethicone, Silica, Sodium Hyaluronate, Tocopheryl Acetate, Mica, CI 77891, CI 15850, CI 77491.",
+    skinTypes: ["All"], shades: [sh("Rosewood", "#a8475c"), sh("Berry Noir", "#6d1f3a"), sh("Nude Silk", "#c58b7b"), sh("Crimson Muse", "#b3203a"), sh("Soft Mauve", "#a87085"), sh("Terracotta", "#b9573a")],
+    visual: "lipstick", tone: ["#f8dfe4", "#e9a3b3"], badge: "Bestseller", popularity: 98, createdAt: "2026-03-10",
+  },
+  {
+    id: 2, slug: "lash-architect-waterproof-mascara", name: "Lash Architect Waterproof Mascara", brand: "Maison Lumière",
+    category: "makeup", subcategory: "Eyes", price: 24, rating: 4.7, reviewCount: 932, stock: 77,
+    tagline: "Length, lift and volume that survives anything.",
+    description: "A sculpting wand grips every lash from root to tip, building dramatic length without clumps. The waterproof formula resists humidity, tears and swimming, yet removes cleanly with warm water and a cleanser.",
+    benefits: ["Up to 3x volume", "Waterproof, smudge-proof", "Conditioning panthenol & castor oil", "Ophthalmologist tested"],
+    howToUse: "Wiggle the wand from root to tip, then comb through. Apply a second coat before the first dries for added drama.",
+    ingredients: "Aqua, Copernicia Cerifera Wax, Isododecane, Synthetic Beeswax, Panthenol, Ricinus Communis Seed Oil, Iron Oxides.",
+    skinTypes: ["All"], shades: [sh("Jet Black", "#16110f"), sh("Espresso", "#3a241c")],
+    visual: "mascara", tone: ["#ece4e1", "#8a7a76"], popularity: 90, createdAt: "2026-01-22",
+  },
+  {
+    id: 3, slug: "skin-veil-serum-foundation", name: "Skin Veil Serum Foundation", brand: "Aurelle Paris",
+    category: "makeup", subcategory: "Face", price: 42, rating: 4.6, reviewCount: 764, stock: 31,
+    tagline: "Second-skin coverage with 8% niacinamide serum.",
+    description: "A buildable medium coverage foundation that behaves like skincare. Blurs pores, evens tone and leaves a natural, lit-from-within finish. Available in 6 undertone-balanced shades for real skin.",
+    benefits: ["Medium, buildable coverage", "8% niacinamide for tone & texture", "SPF 20 protection", "Skin looks better after 4 weeks"],
+    howToUse: "Shake well. Apply two pumps from the centre of the face outward with a sponge or brush. Build coverage where needed.",
+    ingredients: "Aqua, Niacinamide, Cyclopentasiloxane, Glycerin, Zinc Oxide, Titanium Dioxide, Squalane, Tocopherol, Iron Oxides.",
+    skinTypes: ["Combination", "Oily", "Normal"], shades: [sh("Porcelain 10", "#f2d6c4"), sh("Ivory 20", "#e8c3a6"), sh("Sand 30", "#d4a47d"), sh("Honey 40", "#b98259"), sh("Caramel 50", "#94603e"), sh("Espresso 60", "#5d3a26")],
+    visual: "bottle", tone: ["#f3e2d5", "#d4a47d"], popularity: 85, createdAt: "2026-02-04",
+  },
+  {
+    id: 4, slug: "rose-quartz-eyeshadow-palette", name: "Rose Quartz Eyeshadow Palette", brand: "Aurelle Paris",
+    category: "makeup", subcategory: "Eyes", price: 46, rating: 4.9, reviewCount: 412, stock: 9,
+    tagline: "Twelve rosy neutrals, from satin matte to liquid foil.",
+    description: "A curated twelve-pan palette of mattes, satins and multichrome toppers. Buttery, finely-milled pigments blend in seconds and layer without fallout — for soft daytime washes or smoky evenings.",
+    benefits: ["12 versatile shades", "Zero-fallout, crease-proof", "Mirrored, travel-ready case", "Talc-free formula"],
+    howToUse: "Sweep a matte transition shade through the crease, build depth at the outer corner and press a foil shade onto the lid with a fingertip.",
+    ingredients: "Mica, Magnesium Stearate, Caprylic/Capric Triglyceride, Boron Nitride, Synthetic Fluorphlogopite, CI 77891, CI 77491, CI 75470.",
+    skinTypes: ["All"], shades: [sh("Rose Quartz", "#d89aa6")],
+    visual: "palette", tone: ["#f7e1e4", "#d89aa6"], badge: "New", popularity: 80, createdAt: "2026-09-02",
+  },
+  {
+    id: 5, slug: "glow-ritual-vitamin-c-serum", name: "Glow Ritual Vitamin C Serum", brand: "Dermalis",
+    category: "skincare", subcategory: "Serums", price: 54, compareAt: 68, rating: 4.8, reviewCount: 2106, stock: 4,
+    tagline: "15% stabilised vitamin C for visibly brighter skin in 14 days.",
+    description: "A lightweight, fast-absorbing serum pairing 15% L-ascorbic acid with ferulic acid and vitamin E to brighten dullness, fade dark spots and protect from daily environmental stress.",
+    benefits: ["Visibly brighter in 14 days", "Fades dark spots & uneven tone", "Antioxidant defence", "Fragrance-free"],
+    howToUse: "Apply 3-4 drops to clean, dry skin each morning. Follow with moisturiser and SPF. Patch test before first use.",
+    ingredients: "Aqua, L-Ascorbic Acid, Propanediol, Glycerin, Ferulic Acid, Tocopherol, Sodium Hyaluronate, Phenoxyethanol.",
+    skinTypes: ["Normal", "Combination", "Dry", "Oily"], shades: [sh("30 ml", "#f1b449")],
+    visual: "dropper", tone: ["#fdeccd", "#f1b449"], badge: "Sale", popularity: 99, createdAt: "2025-11-14",
+  },
+  {
+    id: 6, slug: "cloud-barrier-moisturiser", name: "Cloud Barrier Moisturiser", brand: "Dermalis",
+    category: "skincare", subcategory: "Moisturisers", price: 38, rating: 4.7, reviewCount: 1530, stock: 64,
+    tagline: "Ceramide-rich cream that melts in and locks moisture for 72 hours.",
+    description: "A whipped, barrier-repairing cream with three ceramides, squalane and panthenol. It calms redness, replenishes dryness and leaves skin supple, never greasy.",
+    benefits: ["72-hour hydration", "Repairs the skin barrier", "Soothes sensitivity", "Dermatologist tested"],
+    howToUse: "Massage a pea-sized amount over face and neck morning and night after serum.",
+    ingredients: "Aqua, Glycerin, Squalane, Ceramide NP, Ceramide AP, Ceramide EOP, Panthenol, Cholesterol, Allantoin.",
+    skinTypes: ["Dry", "Sensitive", "Normal"], shades: [sh("50 ml", "#f2e7e0")],
+    visual: "jar", tone: ["#f7efe9", "#e3cdc0"], popularity: 88, createdAt: "2025-10-02",
+  },
+  {
+    id: 7, slug: "daily-shield-spf-50-fluid", name: "Daily Shield SPF 50 Fluid", brand: "Dermalis",
+    category: "skincare", subcategory: "Sun Care", price: 32, rating: 4.8, reviewCount: 1877, stock: 120,
+    tagline: "Invisible, non-greasy sunscreen made for oily and combination skin.",
+    description: "A weightless broad-spectrum SPF 50 fluid that leaves no white cast and sits beautifully under makeup. Mattifying microspheres keep shine in check all day.",
+    benefits: ["SPF 50 PA++++", "No white cast on any skin tone", "Mattifying, makeup-friendly", "Water resistant 40 min"],
+    howToUse: "Apply generously 15 minutes before sun exposure. Reapply every two hours.",
+    ingredients: "Aqua, Homosalate, Ethylhexyl Salicylate, Butyl Methoxydibenzoylmethane, Niacinamide, Silica, Tocopherol.",
+    skinTypes: ["Oily", "Combination", "Normal"], shades: [sh("50 ml", "#fbe4a0")],
+    visual: "tube", tone: ["#fff3cf", "#f5c95a"], badge: "Bestseller", popularity: 96, createdAt: "2026-04-18",
+  },
+  {
+    id: 8, slug: "midnight-repair-night-cream", name: "Midnight Repair Night Cream", brand: "Dermalis",
+    category: "skincare", subcategory: "Moisturisers", price: 62, rating: 4.9, reviewCount: 688, stock: 18,
+    tagline: "Retinal + peptides to renew skin while you sleep.",
+    description: "A luxurious overnight treatment with encapsulated retinal, copper peptides and bakuchiol. Softens fine lines, refines texture and wakes you up to smoother, plumper skin.",
+    benefits: ["Visibly softens fine lines", "Encapsulated retinal, low irritation", "Peptide-boosted firming", "Wakes skin up rested"],
+    howToUse: "Apply at night after cleansing, avoiding the eye area. Start 2-3 nights per week and build gradually.",
+    ingredients: "Aqua, Squalane, Retinal, Bakuchiol, Copper Tripeptide-1, Shea Butter, Glycerin, Tocopherol.",
+    skinTypes: ["Normal", "Dry", "Combination"], shades: [sh("50 ml", "#cdb8e6")],
+    visual: "jar", tone: ["#e9defa", "#9d7bb0"], popularity: 82, createdAt: "2026-05-25",
+  },
+  {
+    id: 9, slug: "dew-drop-hyaluronic-toner", name: "Dew Drop Hyaluronic Toner", brand: "Aurelle Paris",
+    category: "skincare", subcategory: "Toners", price: 29, rating: 4.5, reviewCount: 540, stock: 55,
+    tagline: "Three weights of hyaluronic acid for glassy, bouncy skin.",
+    description: "A hydrating essence-toner that preps skin to absorb everything that follows. Layer it for a dewy, plumped finish with zero stickiness.",
+    benefits: ["Triple-weight hyaluronic acid", "Alcohol-free & soothing", "Preps skin for serums", "Vegan"],
+    howToUse: "Pat into clean skin with palms or a cotton pad. Layer 2-3 times for extra hydration.",
+    ingredients: "Aqua, Glycerin, Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Centella Asiatica Extract, Panthenol.",
+    skinTypes: ["All", "Dry", "Sensitive"], shades: [sh("150 ml", "#cfe9f2")],
+    visual: "bottle", tone: ["#e7f4f8", "#9ccbdc"], popularity: 70, createdAt: "2026-02-20",
+  },
+  {
+    id: 10, slug: "silk-root-repair-hair-mask", name: "Silk Root Repair Hair Mask", brand: "Atelier Vie",
+    category: "haircare", subcategory: "Treatments", price: 34, rating: 4.8, reviewCount: 905, stock: 40,
+    tagline: "Bond-building mask that rescues damaged, colour-treated hair.",
+    description: "A rich, creamy treatment infused with keratin peptides, argan oil and silk protein. Rebuilds strength, restores elasticity and leaves hair glossy, soft and manageable in just five minutes.",
+    benefits: ["Repairs up to 90% of damage", "Safe for colour-treated hair", "Five-minute salon result", "Silicone-free"],
+    howToUse: "After shampooing, apply to towel-dried lengths. Leave for 5 minutes, then rinse thoroughly. Use weekly.",
+    ingredients: "Aqua, Cetearyl Alcohol, Hydrolyzed Keratin, Argania Spinosa Kernel Oil, Hydrolyzed Silk, Behentrimonium Chloride.",
+    skinTypes: ["Damaged", "Dry", "Coloured"], shades: [sh("250 ml", "#e8d3ec")],
+    visual: "jar", tone: ["#f3e8f6", "#b48cc5"], popularity: 84, createdAt: "2026-01-12",
+  },
+  {
+    id: 11, slug: "gloss-elixir-hair-oil", name: "Gloss Elixir Hair Oil", brand: "Atelier Vie",
+    category: "haircare", subcategory: "Styling", price: 31, rating: 4.7, reviewCount: 612, stock: 28,
+    tagline: "Featherlight shine oil with heat protection up to 230°C.",
+    description: "A silky blend of camellia, jojoba and argan oils that tames frizz, adds mirror shine and shields from heat styling — without weighing hair down.",
+    benefits: ["Instant glass-like shine", "Heat protection to 230°C", "Frizz control for 48 hours", "Non-greasy"],
+    howToUse: "Warm 2-3 drops between palms and smooth through damp or dry lengths and ends.",
+    ingredients: "Cyclopentasiloxane, Camellia Oleifera Seed Oil, Simmondsia Chinensis Seed Oil, Argania Spinosa Kernel Oil, Tocopherol.",
+    skinTypes: ["All", "Frizzy"], shades: [sh("60 ml", "#e9c46a")],
+    visual: "dropper", tone: ["#fbefd2", "#d9b574"], badge: "New", popularity: 78, createdAt: "2026-09-12",
+  },
+  {
+    id: 12, slug: "scalp-reset-clarifying-shampoo", name: "Scalp Reset Clarifying Shampoo", brand: "Atelier Vie",
+    category: "haircare", subcategory: "Shampoo", price: 26, rating: 4.4, reviewCount: 388, stock: 90,
+    tagline: "Salicylic exfoliation for a clean, balanced scalp.",
+    description: "A gentle but effective clarifying shampoo with 1% salicylic acid and zinc PCA to dissolve build-up, balance oil and leave your scalp fresh and itch-free.",
+    benefits: ["Removes product build-up", "Balances oily scalp", "Fresh peppermint finish", "Sulphate-free"],
+    howToUse: "Massage into wet scalp for one minute, then rinse. Use once or twice weekly.",
+    ingredients: "Aqua, Cocamidopropyl Betaine, Salicylic Acid, Zinc PCA, Panthenol, Mentha Piperita Oil.",
+    skinTypes: ["Oily", "Normal"], shades: [sh("300 ml", "#bfe3d3")],
+    visual: "bottle", tone: ["#e4f4ec", "#7fbfa4"], popularity: 60, createdAt: "2025-12-05",
+  },
+  {
+    id: 13, slug: "maison-rose-eau-de-parfum", name: "Maison Rose Eau de Parfum", brand: "Maison Lumière",
+    category: "fragrance", subcategory: "Women", price: 96, rating: 4.9, reviewCount: 356, stock: 6,
+    tagline: "Damask rose, pink pepper and a whisper of white musk.",
+    description: "A romantic, modern rose. Sparkling pink pepper opens onto velvety Bulgarian rose absolute before settling into a warm trail of white musk, cedar and vanilla. Lasts 8+ hours on skin.",
+    benefits: ["Eau de Parfum, 18% concentration", "8+ hours longevity", "Refillable glass flacon", "Ethically sourced rose absolute"],
+    howToUse: "Spray on pulse points — wrists, neck and behind the ears — from 15 cm. Do not rub.",
+    ingredients: "Alcohol Denat., Parfum, Aqua, Limonene, Linalool, Citronellol, Geraniol, Coumarin.",
+    skinTypes: ["All"], shades: [sh("50 ml", "#d9788f")],
+    visual: "perfume", tone: ["#fbe2e8", "#d9788f"], badge: "Limited", popularity: 92, createdAt: "2026-08-01",
+  },
+  {
+    id: 14, slug: "amber-noir-eau-de-parfum", name: "Amber Noir Eau de Parfum", brand: "Maison Lumière",
+    category: "fragrance", subcategory: "Unisex", price: 108, rating: 4.8, reviewCount: 271, stock: 22,
+    tagline: "Smoked amber, black tea and warm sandalwood.",
+    description: "A magnetic, after-dark scent. Cardamom and black tea open the composition, giving way to resinous amber and creamy sandalwood on a base of soft leather and tonka.",
+    benefits: ["Unisex, long-wearing", "Deep, enveloping dry-down", "Travel spray included", "Cruelty-free"],
+    howToUse: "Apply to pulse points and clothing for extra longevity. Pairs well with Maison Rose for layering.",
+    ingredients: "Alcohol Denat., Parfum, Aqua, Limonene, Linalool, Eugenol, Coumarin, Benzyl Benzoate.",
+    skinTypes: ["All"], shades: [sh("50 ml", "#8a5a2b")],
+    visual: "perfume", tone: ["#efe1cc", "#8a5a2b"], popularity: 76, createdAt: "2026-06-06",
+  },
+  {
+    id: 15, slug: "pro-blend-brush-set", name: "Pro Blend Brush Set", brand: "Atelier Vie",
+    category: "tools", subcategory: "Brushes", price: 58, rating: 4.8, reviewCount: 1042, stock: 35,
+    tagline: "Eight vegan brushes for a flawless, airbrushed finish.",
+    description: "A complete face and eye brush kit with ultra-soft synthetic fibres, balanced aluminium ferrules and ergonomic rose-gold handles. Includes a vegan leather travel roll.",
+    benefits: ["8 essential brushes", "100% vegan, ultra-soft fibres", "Shed-free, easy to clean", "Travel roll included"],
+    howToUse: "Wash weekly with mild cleanser, reshape bristles and dry flat.",
+    ingredients: "Synthetic Taklon fibres, Aluminium ferrules, Birchwood handles.",
+    skinTypes: ["All"], shades: [sh("Rose Gold", "#d9a191")],
+    visual: "brush", tone: ["#f6e5df", "#d9a191"], badge: "Bestseller", popularity: 91, createdAt: "2025-09-18",
+  },
+  {
+    id: 16, slug: "sculpt-duo-powder-compact", name: "Sculpt Duo Powder Compact", brand: "Aurelle Paris",
+    category: "makeup", subcategory: "Face", price: 36, rating: 4.6, reviewCount: 497, stock: 51,
+    tagline: "Contour and highlight in one silky, blendable compact.",
+    description: "A buildable bronzer and luminous highlighter duo in a refillable mirrored compact. Sculpt cheekbones with a sun-kissed shade and finish with a pearl glow.",
+    benefits: ["2-in-1 bronzer & highlighter", "Seamlessly blendable", "Refillable compact", "Talc-free"],
+    howToUse: "Sweep the bronzer under cheekbones and temples, then dust the highlighter on high points.",
+    ingredients: "Mica, Synthetic Fluorphlogopite, Magnesium Stearate, Squalane, Silica, CI 77491, CI 77492.",
+    skinTypes: ["All"], shades: [sh("Golden Hour", "#c58a5b"), sh("Soft Sand", "#d9b99b"), sh("Deep Bronze", "#8d5a38")],
+    visual: "compact", tone: ["#f3e4d8", "#c58a5b"], popularity: 72, createdAt: "2026-03-30",
+  },
+  {
+    id: 17, slug: "cloud-sponge-duo", name: "Cloud Sponge Duo", brand: "Atelier Vie",
+    category: "tools", subcategory: "Sponges", price: 18, rating: 4.7, reviewCount: 733, stock: 140,
+    tagline: "Two bouncy, latex-free sponges for seamless blending.",
+    description: "Ultra-soft, skin-friendly sponges that expand when damp for streak-free foundation, concealer and cream products. One for the face, one precision tip for under-eyes.",
+    benefits: ["Latex-free", "Streak-free blending", "Doubles in size when damp", "Washable & reusable"],
+    howToUse: "Dampen, squeeze out excess water and bounce product into skin. Wash after each use.",
+    ingredients: "Polyurethane foam.",
+    skinTypes: ["All"], shades: [sh("Blush", "#f0b6c3"), sh("Cream", "#f5e5d8")],
+    visual: "brush", tone: ["#fdebee", "#f0b6c3"], popularity: 66, createdAt: "2026-07-07",
+  },
+];
+
+const pool: Review[] = [
+  { author: "Amira K.", skin: "Combination", rating: 5, title: "Instant favourite", body: "Honestly the best purchase I've made this year. The quality is obvious from the first use and it's already in my everyday routine.", verified: true, date: "2026-09-14" },
+  { author: "Sofia R.", skin: "Dry", rating: 5, title: "Worth every penny", body: "Beautiful texture, lovely packaging and it arrived in two days. My friends keep asking what I'm using.", verified: true, date: "2026-09-02" },
+  { author: "Nadia H.", skin: "Oily", rating: 4, title: "Really impressed", body: "Performs exactly as described and lasts all day. Taking one star off only because I'd love even more size options.", verified: true, date: "2026-08-21" },
+  { author: "Leila M.", skin: "Sensitive", rating: 5, title: "Gentle and effective", body: "No irritation at all, which is rare for me. I noticed a difference within the first two weeks.", verified: true, date: "2026-08-09" },
+  { author: "Chloe T.", skin: "Normal", rating: 4, title: "Lovely finish", body: "Looks luxurious and feels even better. I'll definitely repurchase and try the rest of the range.", verified: true, date: "2026-07-26" },
+  { author: "Yasmin A.", skin: "Combination", rating: 5, title: "Holy grail", body: "I've tried dozens of similar products. This is the one I'll keep coming back to — nothing else compares.", verified: true, date: "2026-07-11" },
+];
+
+function withReviews(s: Seed): Product {
+  const reviews = [0, 1, 2, 3].map((i) => pool[(s.id + i * 2) % pool.length]);
+  return { ...s, reviews };
+}
+
+export const seedProducts: Product[] = seed.map(withReviews);
+
+export const brands = Array.from(new Set(seed.map((p) => p.brand)));
+
+export const testimonials = [
+  { name: "Amira K.", skin: "Combination skin", rating: 5, quote: "My skin has never looked this good. The vitamin C serum alone changed my whole routine — and the packaging is gorgeous.", product: "Glow Ritual Vitamin C Serum" },
+  { name: "Sofia R.", skin: "Dry skin", rating: 5, quote: "I was nervous ordering lipstick online, but the shade guide nailed it. Rosewood is now my everyday colour.", product: "Velvet Rouge Matte Lipstick" },
+  { name: "Leila M.", skin: "Sensitive skin", rating: 5, quote: "Finally a moisturiser that doesn't irritate me. Fast delivery, beautiful gift wrapping, and a hand-written note.", product: "Cloud Barrier Moisturiser" },
+  { name: "Chloe T.", skin: "Normal skin", rating: 5, quote: "Maison Rose gets compliments every single time I wear it. The perfect gift, too — it arrived beautifully boxed.", product: "Maison Rose Eau de Parfum" },
+];
+
+export const faqs = [
+  { q: "Are all products 100% authentic?", a: "Yes. We source directly from brands and authorised distributors only, and every order ships with a batch authenticity card." },
+  { q: "How long does shipping take?", a: "Standard shipping takes 3-5 business days and is free over $75. Express delivery arrives in 1-2 business days." },
+  { q: "What is your returns policy?", a: "You have 14 days from delivery to return unopened items for a full refund. Defective or damaged items are replaced at no cost." },
+  { q: "How do I choose the right shade?", a: "Use our Shade Finder on the home page or message us on WhatsApp with a photo in natural light — our beauty advisors will match you." },
+  { q: "Which payment methods do you accept?", a: "Major credit and debit cards and digital wallets via our secure payment gateway. Guest checkout is always available." },
+  { q: "Can I change or cancel my order?", a: "Orders can be changed or cancelled within 2 hours of purchase. Contact us immediately and we'll take care of it." },
+];
