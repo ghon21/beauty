@@ -17,7 +17,7 @@ export const MinusIcon = (p: P) => (<svg {...base(p)}><path d="M5 12h14" /></svg
 export const ArrowIcon = (p: P) => (<svg {...base(p)}><path d="M5 12h14M13 6l6 6-6 6" /></svg>);
 export const ChevronIcon = (p: P) => (<svg {...base(p)}><path d="m6 9 6 6 6-6" /></svg>);
 export const CheckIcon = (p: P) => (<svg {...base(p)}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>);
-export const StarIcon = ({ fill = 1, ...p }: P & { fill?: number }) => {
+export const StarIcon = ({ fill = 1, ...p }: Omit<P, "fill"> & { fill?: number }) => {
   const id = `s${Math.round(fill * 100)}`;
   return (
     <svg {...base(p)} width={p.width ?? 14} height={p.height ?? 14} strokeWidth={1}>
